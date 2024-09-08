@@ -32,7 +32,7 @@ This is a weather forecast website built using HTML, CSS, and JavaScript. It pro
 **View Weather Data**: Check the displayed weather details including temperature, rain, humidity, and wind speed for up to three cities.
 
 ## API Key
-Could you replace YOUR_API_KEY in the JavaScript code with your own API key from WeatherAPI to fetch weather data?
+Could you replace YOUR_API_KEY in the JavaScript code with your API key from WeatherAPI to fetch weather data?
 
 ## Contributing
 Contributions are welcome! Please open issues or submit pull requests to help improve the project.
