@@ -27,9 +27,9 @@ This is a weather forecast website built using HTML, CSS, and JavaScript. It pro
 2. **Open the Website**: Navigate to the cloned directory and open index.html in your web browser to view the website.
 
 ## Usage
-**Enter a City**: Type a city name into the search bar.
-**Click Search**: Click the search button to fetch and display weather information.
-**View Weather Data**: Check the displayed weather details including temperature, rain, humidity, and wind speed for up to three cities.
+**Enter a City**: Type a city name into the search bar.  
+**Click Search**: Click the search button to fetch and display weather information.  
+**View Weather Data**: Check the displayed weather details including temperature, rain, humidity, and wind speed for up to three cities.  
 
 ## API Key
 Could you replace YOUR_API_KEY in the JavaScript code with your API key from WeatherAPI to fetch weather data?
