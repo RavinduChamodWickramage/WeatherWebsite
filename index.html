@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Website</title>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!-- Left Container -->
+    <div class="left-container">
+      <!-- Current Weather Section -->
+      <div class="current-weather">
+        <!-- Search Bar -->
+        <div class="search-bar">
+          <div class="search-container">
+            <input
+              class="form-control"
+              type="search"
+              placeholder="Search for places..."
+              aria-label="Search"
+              id="search-current-place"
+            />
+            <button class="search-btn-current-place" id="search-btn">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Today Weather Icon -->
+        <div class="weather-icon">
+          <img
+            src="Resources/cloud_cloudy_day_forecast_sun_icon.svg"
+            alt="Weather Icon"
+            id="current-weather-icon"
+          />
+        </div>
+
+        <!-- Today Weather Info -->
+        <div class="today-weather-info">
+          <div class="today-temperature">
+            <p>
+              <span
+                ><h1 id="temperature-number">26</h1>
+                <h3 id="temperature-measurement">°C</h3></span
+              >
+            </p>
+          </div>
+          <div class="today-time">
+            <p>
+              <span
+                ><h4 id="today">Monday,</h4>
+                <h4 id="time">12.00</h4></span
+              >
+            </p>
+          </div>
+
+          <div class="today-forecast">
+            <div class="today-forecast-icon">
+              <i class="bi bi-cloud-drizzle"></i>
+              <i class="bi bi-moisture"></i>
+              <i class="bi bi-wind"></i>
+            </div>
+            <div class="today-forecast-titles">
+              <p class="today-rain">Rain</p>
+              <p class="today-humidity">Humidity</p>
+              <p class="today-Wind">Wind</p>
+            </div>
+            <div class="today-forecast-values">
+              <p class="today-rain-value" id="today-rain-value">30%</p>
+              <p class="today-humidity-value" id="today-humidity-value">70%</p>
+              <p class="today-Wind-value" id="today-Wind-value">14 km/h</p>
+            </div>
+          </div>
+
+          <!-- Current Place -->
+          <div class="current-place">
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d57331.1675710827!2d79.96695!3d7.060562!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fa296719f78d%3A0xee4412864be6dce5!2sGanemulla%2C%20Sri%20Lanka!5e1!3m2!1sen!2sus!4v1725524813634!5m2!1sen!2sus"
+                width="400"
+                height="300"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                id="current-place-map"
+              ></iframe>
+
+              <div class="overlay">
+                <p class="current-place" id="current-place">
+                  Ganemulla, Sri Lanka
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Container -->
+    <div class="right-container">
+      <!-- Top Container -->
+      <div class="right-top-container">
+        <div class="top-left-container">
+          <div class="temperature-btns">
+            <button class="temperature-btn" id="celsius-btn">°C</button>
+            <button class="temperature-btn" id="fahrenheit-btn">°F</button>
+          </div>
+          <div class="wind-btns">
+            <button class="wind-btn" id="kmh-btn">km/h</button>
+            <button class="wind-btn" id="mph-btn">mp/h</button>
+          </div>
+        </div>
+        <div class="top-right-container">
+          <div class="today-date" id="today-date">26 August 2024</div>
+          <div class="notifications"><i class="bi bi-bell"></i></div>
+          <div class="avatar"><i class="bi bi-person-circle"></i></div>
+        </div>
+      </div>
+
+      <!-- Weekly Forecast -->
+      <div class="weekly-forecast-container mt-4">
+        <div class="row g-3">
+          <div class="col-md-1-7">
+            <div class="card" id="day1">
+              <div class="card-body">
+                <h5 class="card-title" id="day1-title">Mon</h5>
+                <img
+                  src="Resources/cloud_cloudy_day_forecast_sun_icon.svg"
+                  alt="Weather Icon"
+                  id="day1-icon"
+                />
+                <div class="temperature-display">
+                  <h1 id="day1-temp">26</h1>
+                  <h3 id="day1-temp-measurement">°C</h3>
+                </div>
+                <div class="day-forecast">
+                  <div class="day-rain">
+                    <i class="bi bi-cloud-drizzle"></i>
+                    <p class="day-rain-value" id="day1-rain-value">30%</p>
+                  </div>
+                  <div class="day-humidity">
+                    <i class="bi bi-moisture"></i>
+                    <p class="day-humidity-value" id="day1-humidity-value">
+                      70%
+                    </p>
+                  </div>
+                  <div class="day-wind">
+                    <i class="bi bi-wind"></i>
+                    <p class="day-Wind-value" id="day1-Wind-value">20 km/h</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-7">
+            <div class="card" id="day2">
+              <div class="card-body">
+                <h5 class="card-title" id="day2-title">Tue</h5>
+                <img
+                  src="Resources/cloud_cloudy_day_forecast_sun_icon.svg"
+                  alt="Weather Icon"
+                  id="day2-icon"
+                />
+                <div class="temperature-display">
+                  <h1 id="day2-temp">26</h1>
+                  <h3 id="day2-temp-measurement">°C</h3>
+                </div>
+                <div class="day-forecast">
+                  <div class="day-rain">
+                    <i class="bi bi-cloud-drizzle"></i>
+                    <p class="day-rain-value" id="day2-rain-value">30%</p>
+                  </div>
+                  <div class="day-humidity">
+                    <i class="bi bi-moisture"></i>
+                    <p class="day-humidity-value" id="day2-humidity-value">
+                      70%
+                    </p>
+                  </div>
+                  <div class="day-wind">
+                    <i class="bi bi-wind"></i>
+                    <p class="day-Wind-value" id="day2-Wind-value">20 km/h</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-7">
+            <div class="card" id="day3">
+              <div class="card-body">
+                <h5 class="card-title" id="day3-title">Wed</h5>
+                <img
+                  src="Resources/cloud_cloudy_day_forecast_sun_icon.svg"
+                  alt="Weather Icon"
+                  id="day3-icon"
+                />
+                <div class="temperature-display">
+                  <h1 id="day3-temp">26</h1>
+                  <h3 id="day3-temp-measurement">°C</h3>
+                </div>
+                <div class="day-forecast">
+                  <div class="day-rain">
+                    <i class="bi bi-cloud-drizzle"></i>
+                    <p class="day-rain-value" id="day3-rain-value">30%</p>
+                  </div>
+                  <div class="day-humidity">
+                    <i class="bi bi-moisture"></i>
+                    <p class="day-humidity-value" id="day3-humidity-value">
+                      70%
+                    </p>
+                  </div>
+                  <div class="day-wind">
+                    <i class="bi bi-wind"></i>
+                    <p class="day-Wind-value" id="day3-Wind-value">20 km/h</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-7">
+            <div class="card" id="day04">
+              <div class="card-body">
+                <h5 class="card-title" id="day4-title">Thu</h5>
+                <img
+                  src="Resources/cloud_cloudy_day_forecast_sun_icon.svg"
+                  alt="Weather Icon"
+                  id="day4-icon"
+                />
+                <div class="temperature-display">
+                  <h1 id="day4-temp">26</h1>
+                  <h3 id="day4-temp-measurement">°C</h3>
+                </div>
+                <div class="day-forecast">
+                  <div class="day-rain">
+                    <i class="bi bi-cloud-drizzle"></i>
+                    <p class="day-rain-value" id="day4-rain-value">30%</p>
+                  </div>
+                  <div class="day-humidity">
+                    <i class="bi bi-moisture"></i>
+                    <p class="day-humidity-value" id="day4-humidity-value">
+                      70%
+                    </p>
+                  </div>
+                  <div class="day-wind">
+                    <i class="bi bi-wind"></i>
+                    <p class="day-Wind-value" id="day4-Wind-value">20 km/h</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-7">
+            <div class="card" id="day5">
+              <div class="card-body">
+                <h5 class="card-title" id="day5-title">Fri</h5>
+                <img
+                  src="Resources/cloud_cloudy_day_forecast_sun_icon.svg"
+                  alt="Weather Icon"
+                  id="day5-icon"
+                />
+                <div class="temperature-display">
+                  <h1 id="day5-temp">26</h1>
+                  <h3 id="day5-temp-measurement">°C</h3>
+                </div>
+                <div class="day-forecast">
+                  <div class="day-rain">
+                    <i class="bi bi-cloud-drizzle"></i>
+                    <p class="day-rain-value" id="day5-rain-value">30%</p>
+                  </div>
+                  <div class="day-humidity">
+                    <i class="bi bi-moisture"></i>
+                    <p class="day-humidity-value" id="day5-humidity-value">
+                      70%
+                    </p>
+                  </div>
+                  <div class="day-wind">
+                    <i class="bi bi-wind"></i>
+                    <p class="day-Wind-value" id="day5-Wind-value">20 km/h</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-7">
+            <div class="card" id="day6">
+              <div class="card-body">
+                <h5 class="card-title" id="day6-title">Sat</h5>
+                <img
+                  src="Resources/cloud_cloudy_day_forecast_sun_icon.svg"
+                  alt="Weather Icon"
+                  id="day6-icon"
+                />
+                <div class="temperature-display">
+                  <h1 id="day6-temp">26</h1>
+                  <h3 id="day6-temp-measurement">°C</h3>
+                </div>
+                <div class="day-forecast">
+                  <div class="day-rain">
+                    <i class="bi bi-cloud-drizzle"></i>
+                    <p class="day-rain-value" id="day6-rain-value">30%</p>
+                  </div>
+                  <div class="day-humidity">
+                    <i class="bi bi-moisture"></i>
+                    <p class="day-humidity-value" id="day6-humidity-value">
+                      70%
+                    </p>
+                  </div>
+                  <div class="day-wind">
+                    <i class="bi bi-wind"></i>
+                    <p class="day-Wind-value" id="day6-Wind-value">20 km/h</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-7">
+            <div class="card" id="day7">
+              <div class="card-body">
+                <h5 class="card-title" id="day7-title">Sun</h5>
+                <img
+                  src="Resources/cloud_cloudy_day_forecast_sun_icon.svg"
+                  alt="Weather Icon"
+                  id="day7-icon"
+                />
+                <div class="temperature-display">
+                  <h1 id="day7-temp">26</h1>
+                  <h3 id="day7-temp-measurement">°C</h3>
+                </div>
+                <div class="day-forecast">
+                  <div class="day-rain">
+                    <i class="bi bi-cloud-drizzle"></i>
+                    <p class="day-rain-value" id="day7-rain-value">30%</p>
+                  </div>
+                  <div class="day-humidity">
+                    <i class="bi bi-moisture"></i>
+                    <p class="day-humidity-value" id="day7-humidity-value">
+                      70%
+                    </p>
+                  </div>
+                  <div class="day-wind">
+                    <i class="bi bi-wind"></i>
+                    <p class="day-Wind-value" id="day7-Wind-value">20 km/h</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+
+      <!-- Today Hourly Forecast -->
+      <div class="today-hourly-forecast mt-4">
+        <p>Today Hourly Forecast</p>
+        <div class="row g-1">
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>00.00</p>
+                <h1 id="hour00-temp">26</h1>
+                <h3 id="hour00-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour00-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour00-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour00-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>01.00</p>
+                <h1 id="hour01-temp">26</h1>
+                <h3 id="hour01-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour01-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour01-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour01-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>02.00</p>
+                <h1 id="hour02-temp">26</h1>
+                <h3 id="hour02-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour02-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour02-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour02-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>03.00</p>
+                <h1 id="hour03-temp">26</h1>
+                <h3 id="hour03-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour03-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour03-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour03-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>04.00</p>
+                <h1 id="hour04-temp">26</h1>
+                <h3 id="hour04-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour04-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour04-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour04-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>05.00</p>
+                <h1 id="hour05-temp">26</h1>
+                <h3 id="hour05-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour05-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour05-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour05-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>06.00</p>
+                <h1 id="hour06-temp">26</h1>
+                <h3 id="hour06-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour06-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour06-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour06-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>07.00</p>
+                <h1 id="hour07-temp">26</h1>
+                <h3 id="hour07-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour07-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour07-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour07-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>08.00</p>
+                <h1 id="hour08-temp">26</h1>
+                <h3 id="hour08-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour08-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour08-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour08-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>09.00</p>
+                <h1 id="hour09-temp">26</h1>
+                <h3 id="hour09-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour09-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour09-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour09-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>10.00</p>
+                <h1 id="hour10-temp">26</h1>
+                <h3 id="hour10-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour10-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour10-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour10-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>11.00</p>
+                <h1 id="hour11-temp">26</h1>
+                <h3 id="hour11-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour11-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour11-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour11-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>12.00</p>
+                <h1 id="hour12-temp">26</h1>
+                <h3 id="hour12-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour12-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour12-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour12-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>13.00</p>
+                <h1 id="hour13-temp">26</h1>
+                <h3 id="hour13-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour13-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour13-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour13-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>14.00</p>
+                <h1 id="hour14-temp">26</h1>
+                <h3 id="hour14-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour14-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour14-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour14-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>15.00</p>
+                <h1 id="hour15-temp">26</h1>
+                <h3 id="hour15-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour15-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour15-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour15-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>16.00</p>
+                <h1 id="hour16-temp">26</h1>
+                <h3 id="hour16-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour16-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour16-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour16-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>17.00</p>
+                <h1 id="hour17-temp">26</h1>
+                <h3 id="hour17-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour17-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour17-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour17-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>18.00</p>
+                <h1 id="hour18-temp">26</h1>
+                <h3 id="hour18-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour18-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour18-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour18-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>19.00</p>
+                <h1 id="hour19-temp">26</h1>
+                <h3 id="hour19-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour19-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour19-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour19-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>20.00</p>
+                <h1 id="hour20-temp">26</h1>
+                <h3 id="hour20-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour20-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour20-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour20-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>21.00</p>
+                <h1 id="hour21-temp">26</h1>
+                <h3 id="hour21-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour21-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour21-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour21-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>22.00</p>
+                <h1 id="hour22-temp">26</h1>
+                <h3 id="hour22-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour22-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour22-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour22-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-1-8">
+            <div class="forecast-box">
+              <div class="hour-temperature-display">
+                <p>23.00</p>
+                <h1 id="hour23-temp">26</h1>
+                <h3 id="hour23-temp-measurement">°C</h3>
+              </div>
+              <div class="hour-forecast">
+                <div class="hour-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="hour-rain-value" id="hour23-rain-value">30%</p>
+                </div>
+                <div class="hour-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="hour-humidity-value" id="hour23-humidity-value">
+                    70%
+                  </p>
+                </div>
+                <div class="hour-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="hour-wind-value" id="hour23-wind-value">20 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--  -->
+
+      <!-- 3 Countries Forecast -->
+      <div class="countries">
+        <!-- Map 1 -->
+        <div class="maps-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d57331.1675710827!2d79.96695!3d7.060562!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fa296719f78d%3A0xee4412864be6dce5!2sGanemulla%2C%20Sri%20Lanka!5e1!3m2!1sen!2sus!4v1725524813634!5m2!1sen!2sus"
+            width="400"
+            height="300"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+
+          <div class="map-overlay">
+            <!-- Search Bar -->
+            <div class="map-search-bar">
+              <div class="map-search-container">
+                <input
+                  class="custom-search-input"
+                  type="search"
+                  placeholder="Search for places..."
+                  aria-label="Search"
+                  id="search-map1"
+                />
+                <button class="map-search-btn" id="map1-search-btn">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Display City, Country -->
+            <div class="searched-city-country">
+              <h2 class="city-country" id="city1">Colombo, Sri Lanka</h2>
+            </div>
+            <!-- Country Weather -->
+            <div class="weather-container">
+              <div class="country-temp">
+                <h1 id="c1-temp">26</h1>
+                <h3 id="c1-temp-measurement">°C</h3>
+              </div>
+              <div class="country-forecast">
+                <div class="c-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="c-rain-value" id="c1-rain-value">30%</p>
+                </div>
+                <div class="c-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="c-humidity-value" id="c1-humidity-value">70%</p>
+                </div>
+                <div class="c-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="c-Wind-value" id="c1-Wind-value">14 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Map 2 -->
+        <div class="maps-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d57331.1675710827!2d79.96695!3d7.060562!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fa296719f78d%3A0xee4412864be6dce5!2sGanemulla%2C%20Sri%20Lanka!5e1!3m2!1sen!2sus!4v1725524813634!5m2!1sen!2sus"
+            width="400"
+            height="300"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+
+          <div class="map-overlay">
+            <!-- Search Bar -->
+            <div class="map-search-bar">
+              <div class="map-search-container">
+                <input
+                  class="custom-search-input"
+                  type="search"
+                  placeholder="Search for places..."
+                  aria-label="Search"
+                  id="search-map2"
+                />
+                <button class="map-search-btn" id="map2-search-btn">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </div>
+            <!--  -->
+            <!-- Display City, Country -->
+            <div class="searched-city-country">
+              <h2 class="city-country" id="city2">Colombo, Sri Lanka</h2>
+            </div>
+            <!-- Country Weather -->
+            <div class="weather-container">
+              <div class="country-temp">
+                <h1 id="c2-temp">26</h1>
+                <h3 id="c2-temp-measurement">°C</h3>
+              </div>
+              <div class="country-forecast">
+                <div class="c-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="c-rain-value" id="c2-rain-value">30%</p>
+                </div>
+                <div class="c-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="c-humidity-value" id="c2-humidity-value">70%</p>
+                </div>
+                <div class="c-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="c-Wind-value" id="c2-Wind-value">14 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Map 3 -->
+        <div class="maps-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d57331.1675710827!2d79.96695!3d7.060562!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2fa296719f78d%3A0xee4412864be6dce5!2sGanemulla%2C%20Sri%20Lanka!5e1!3m2!1sen!2sus!4v1725524813634!5m2!1sen!2sus"
+            width="400"
+            height="300"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+
+          <div class="map-overlay">
+            <!-- Search Bar -->
+            <div class="map-search-bar">
+              <div class="map-search-container">
+                <input
+                  class="custom-search-input"
+                  type="search"
+                  placeholder="Search for places..."
+                  aria-label="Search"
+                  id="search-map3"
+                />
+                <button class="map-search-btn" id="map3-search-btn">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </div>
+            <!--  -->
+            <!-- Display City, Country -->
+            <div class="searched-city-country">
+              <h2 class="city-country" id="city3">Colombo, Sri Lanka</h2>
+            </div>
+            <!-- Country Weather -->
+            <div class="weather-container">
+              <div class="country-temp">
+                <h1 id="c3-temp">26</h1>
+                <h3 id="c3-temp-measurement">°C</h3>
+              </div>
+              <div class="country-forecast">
+                <div class="c-rain">
+                  <i class="bi bi-cloud-drizzle"></i>
+                  <p class="c-rain-value" id="c3-rain-value">30%</p>
+                </div>
+                <div class="c-humidity">
+                  <i class="bi bi-moisture"></i>
+                  <p class="c-humidity-value" id="c3-humidity-value">70%</p>
+                </div>
+                <div class="c-wind">
+                  <i class="bi bi-wind"></i>
+                  <p class="c-Wind-value" id="c3-Wind-value">14 km/h</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--  -->
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="app.js"></script>
+  </body>
+</html>
